@@ -87,6 +87,11 @@ for line in fd:
 
     depth = count_starting_hashes(line)
     title = line[depth + 1:]
+
+    # skip headline wich start with a number, cause might be already numbered
+    if title[0].isnumeric():
+        continue
+
     headline = Headline(title, depth)
     headline.linenumber = i
 
